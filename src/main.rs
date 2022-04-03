@@ -135,3 +135,22 @@ fn vector_op() {
     v.pop();
     assert_eq!(v.iter().fold(2, | a, b| a * b), 420);
 }
+
+fn print_slide(n: &[f64]) {
+    for elt in n {
+        print!("{} ", elt);
+    }
+    println!()
+}
+
+#[test]
+fn slide_op() {
+    let v: Vec<f64> = vec![0.0, 0.707, 1.0, 0.707];
+    let a: [f64; 4] =  [0.0, -0.707, -1.0, -0.707];
+
+    print_slide(&v);
+    print_slide(&a);
+
+    println!("Slide 1 {:?} ", &v[0..2]);
+    println!("Slide 2 {:?}", &a[2..]);
+}

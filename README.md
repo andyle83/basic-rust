@@ -12,3 +12,5 @@
      - Array `[T; N]`: fixed size determined at compile time
      - Vector Vec<T>: dynamic allocated
      - Shared slice & Mutable slice (Q: what is `shared` meaning)
+       - Shared because it is just a reference, not owner
+       - Slide is just a reference point to sub-set of data in a collection like array / vector
