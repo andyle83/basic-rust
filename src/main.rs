@@ -123,3 +123,15 @@ fn array_op() {
     assert!(sieve[211]);
     assert!(!sieve[9876]);
 }
+
+#[test]
+fn vector_op() {
+    let mut v = vec![2,3,5,7];
+    assert_eq!(v.iter().fold(2, | a, b| a * b), 420);
+
+    v.push(2);
+    assert_eq!(v.iter().fold(2, | a, b| a * b), 840);
+
+    v.pop();
+    assert_eq!(v.iter().fold(2, | a, b| a * b), 420);
+}
