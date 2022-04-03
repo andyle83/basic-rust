@@ -84,9 +84,19 @@ fn boolean_op() {
 fn character_op() {
     assert_eq!('*' as i32, 42);
     assert_eq!('ಠ' as u16, 0xca0);
+    assert_eq!('*'.is_alphabetic(), false);
+    assert_eq!('8'.to_digit(10), Some(8));
 
     match std::char::from_u32(0xca0) {
         Some(c) => println!("Character convert: {}", c),
         None => eprint!("Convert error")
     }
+}
+
+#[test]
+fn tuple_op() {
+    let text = "I see the eigenvalue in thine eye";
+    let (head, tail) = text.split_at(21);
+    assert_eq!(head, "I see the eigenvalue ");
+    assert_eq!(tail, "in thine eye");
 }
