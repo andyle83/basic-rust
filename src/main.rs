@@ -154,3 +154,19 @@ fn slide_op() {
     println!("Slide 1 {:?} ", &v[0..2]);
     println!("Slide 2 {:?}", &a[2..]);
 }
+
+#[test]
+fn string_op() {
+    let mut noodles = "noodles".to_string();
+    // slice string
+    let oodles = &noodles[1..];
+    // string literal has a pre-allocated memory
+    let poodles = "ಠ_ಠ";
+
+    assert_eq!(poodles.len(), 7);
+    assert_eq!(poodles.chars().count(), 3);
+
+    // Not able
+    //poodles.push('\n');
+    noodles.push('s');
+}
