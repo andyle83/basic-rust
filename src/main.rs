@@ -100,3 +100,26 @@ fn tuple_op() {
     assert_eq!(head, "I see the eigenvalue ");
     assert_eq!(tail, "in thine eye");
 }
+
+#[test]
+fn array_op() {
+    let lazy_caterer: [u32; 6] = [1,2,3,4,5,6];
+    let taxonomy = ["Tuan", "Anh", "Le"];
+
+    assert_eq!(lazy_caterer[3], 4);
+    assert_eq!(taxonomy.len(), 3);
+
+    let mut sieve = [true; 10000];
+    for i in 2..100 {
+        if sieve[i] {
+            let mut j = i * i;
+            while j < 10000 {
+                sieve[j] = false;
+                j += i;
+            }
+        }
+    }
+
+    assert!(sieve[211]);
+    assert!(!sieve[9876]);
+}
