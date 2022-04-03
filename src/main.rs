@@ -20,10 +20,10 @@ fn main() {
 
     println!("The greatest common division of {:?} is {}", numbers, d);
 
-    data_type_println();
+    number_type_println();
 }
 
-fn data_type_println() {
+fn number_type_println() {
     let big_val = std::i32::MAX;
 
     println!("big_val = {}", big_val);
@@ -44,10 +44,6 @@ fn data_type_println() {
     let byte_literal_1 = b'A';
     let byte_literal_2 = 65u8;
     println!("Byte literal value: {} and {}", byte_literal_1, byte_literal_2);
-
-    // Special character require backslash
-    let hello_world = "\'Hello... \t World\'";
-    println!("Message in quote {}", hello_world);
 }
 
 fn gcd(mut n:u64, mut m: u64) -> u64 {
@@ -73,5 +69,7 @@ fn test_gcd() {
 fn number_op() {
     assert_eq!(2u16.pow(4), 16);
     assert_eq!((-4i32).abs(), 4);
-    assert_eq!(0b101101u8.count_ones(), 4)
+    assert_eq!(0b101101u8.count_ones(), 4);
+    assert_eq!(5f32.sqrt() * 5f32.sqrt(), 5.);
+    assert_eq!(-1.01f64.floor(), -1.);
 }
