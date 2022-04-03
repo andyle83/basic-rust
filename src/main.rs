@@ -73,3 +73,20 @@ fn number_op() {
     assert_eq!(5f32.sqrt() * 5f32.sqrt(), 5.);
     assert_eq!(-1.01f64.floor(), -1.);
 }
+
+#[test]
+fn boolean_op() {
+    assert_eq!(false as i32, 0);
+    assert_eq!(true as i32, 1);
+}
+
+#[test]
+fn character_op() {
+    assert_eq!('*' as i32, 42);
+    assert_eq!('ಠ' as u16, 0xca0);
+
+    match std::char::from_u32(0xca0) {
+        Some(c) => println!("Character convert: {}", c),
+        None => eprint!("Convert error")
+    }
+}
