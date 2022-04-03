@@ -19,6 +19,35 @@ fn main() {
     }
 
     println!("The greatest common division of {:?} is {}", numbers, d);
+
+    data_type_println();
+}
+
+fn data_type_println() {
+    let big_val = std::i32::MAX;
+
+    println!("big_val = {}", big_val);
+
+    // let x = big_val + 1;
+    let big_val_plus_1 = big_val.wrapping_add(1);
+    println!("big_val + 1 = {}", big_val_plus_1);
+
+    let suffix_number_1 = 42u8;
+    let suffix_number_2 = 1729isize;
+    println!("Suffix numbers: {} and {}", suffix_number_1, suffix_number_2);
+
+    let underscore_number = 4_294_295;
+    let underscore_hex = 0xff_ff;
+    println!("Underscore values : {} and {}", underscore_number, underscore_hex);
+
+    // Return ASCII code of character
+    let byte_literal_1 = b'A';
+    let byte_literal_2 = 65u8;
+    println!("Byte literal value: {} and {}", byte_literal_1, byte_literal_2);
+
+    // Special character require backslash
+    let hello_world = "\'Hello... \t World\'";
+    println!("Message in quote {}", hello_world);
 }
 
 fn gcd(mut n:u64, mut m: u64) -> u64 {
@@ -38,4 +67,11 @@ fn gcd(mut n:u64, mut m: u64) -> u64 {
 fn test_gcd() {
     assert_eq!(gcd(14, 15), 1);
     assert_eq!(gcd( 2 * 3 * 5 * 11 * 17, 3 * 7 * 11 * 13 * 19), 3 * 11);
+}
+
+#[test]
+fn number_op() {
+    assert_eq!(2u16.pow(4), 16);
+    assert_eq!((-4i32).abs(), 4);
+    assert_eq!(0b101101u8.count_ones(), 4)
 }
