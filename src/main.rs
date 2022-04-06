@@ -247,6 +247,8 @@ fn move_op() {
         // birth is COPY type because it is a just a simple type - number
         let age = composers[0].birth;
         assert_eq!(age, 1522);
+        assert_eq!(composers[0].name, Some("Anh Le".to_string()));
+        assert_eq!((*composers)[0].name, Some("Anh Le".to_string()));
 
         //let name = composers[0].name;
         let name = composers[0].name.take();
@@ -283,6 +285,20 @@ fn ref_op() {
         sort_with_mutable_ref(&mut table);
         println!("Table {:?} ", table);
         // assert_eq!(table["Caravaggio"][0], "The Musicians");
+    }
+
+    {
+        let x = 10;
+        let r = &x;
+        assert!(*r == 10);
+    }
+
+    {
+        let mut x = 10;
+        let m = &mut x;
+        assert!(*m == 10);
+        *m = 20;
+        assert!(*m == 20);
     }
 }
 
