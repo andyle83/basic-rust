@@ -262,13 +262,16 @@ fn ref_op() {
         table.insert("Gesualdo".to_string(), vec!["many madrigals".to_string(), "Tenebrae Responsoria".to_string()]);
         table.insert("Caravaggio".to_string(), vec!["The Musicians".to_string(), "The Calling of St. Matthew".to_string()]);
         assert_eq!(table["Caravaggio"][0], "The Musicians");
-        show(table);
+        // show(table);
         // moved
-        //assert_eq!(table["Caravaggio"][0], "The Musicians");
+        // assert_eq!(table["Caravaggio"][0], "The Musicians");
+        // using shared reference
+        show(&table);
+        assert_eq!(table["Caravaggio"][0], "The Musicians");
     }
 }
 
-fn show(table: Table) {
+fn show(table: &Table) {
     for (artist, works) in table {
         println!("works by {}:", artist); for work in works {
             println!("  {}", work);
