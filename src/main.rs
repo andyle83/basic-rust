@@ -1,5 +1,6 @@
 use std::str::FromStr;
 use std::env;
+use std::fmt::format;
 
 fn main() {
     let mut numbers = Vec::new();
@@ -169,4 +170,51 @@ fn string_op() {
     // Not able
     //poodles.push('\n');
     noodles.push('s');
+
+    assert!("ONE".to_lowercase() == "one");
+    assert!("peanut".contains("nut"));
+    assert_eq!("ಠ_ಠ".replace("ಠ", "■"), "■_■");
+    assert_eq!(" clean\n".trim(), "clean");
+
+    for word in "veni, vidi, vici".split(", ") {
+        assert!(word.starts_with("v"));
+    }
+}
+
+#[test]
+fn ownership_op() {
+    // ownership
+    {
+        let point = Box::new((0.625, 0.5));
+        let label = format!("{:?}", point);
+        assert_eq!(label, "(0.625, 0.5)");
+    }
+
+    {
+        let s  = vec!["udon".to_string(), "ramen".to_string(), "soba".to_string()];
+        let t = s;
+        // let u = s;
+    }
+
+    {
+        let s = vec!["udon".to_string(), "ramen".to_string(), "soba".to_string()];
+        let t = s.clone();
+        let u = s.clone();
+    }
+
+    {
+        let mut v = Vec::new();
+        for i in 101 .. 106 {
+            v.push(i.to_string());
+        }
+
+        // pull out random elements from the vector
+        // move ownership
+        //let third = v[2];
+        //let fifth = v[4];
+        let fifth = v.pop().unwrap();
+        assert_eq!(fifth, "105");
+        let second = v.swap_remove(1);
+        assert_eq!(second, "102");
+    }
 }
