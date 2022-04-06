@@ -227,6 +227,27 @@ fn ownership_op() {
         let third = std::mem::replace(&mut v[2], "substitute".to_string());
         assert_eq!(third, "103");
 
-        assert_eq!(v, vec!["101", "104", "substitute"];
+        assert_eq!(v, vec!["101", "104", "substitute"]);
+    }
+}
+
+#[test]
+fn move_op() {
+    {
+        struct Person { name: Option<String>, birth: i32 }
+        let mut composers = Vec::new();
+        composers.push(Person {
+            name: Some("Anh Le".to_string()),
+            birth: 1522
+        });
+
+        // birth is COPY type because it is a just a simple type - number
+        let age = composers[0].birth;
+        assert_eq!(age, 1522);
+
+        //let name = composers[0].name;
+        let name = composers[0].name.take();
+        assert_eq!(name, Some("Anh Le".to_string()));
+        assert_eq!(composers[0].name, None);
     }
 }
