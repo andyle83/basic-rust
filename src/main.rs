@@ -275,6 +275,15 @@ fn ref_op() {
         show_with_ref(&table);
         assert_eq!(table["Caravaggio"][0], "The Musicians");
     }
+
+    {
+        let mut table = Table::new();
+        table.insert("Gesualdo".to_string(), vec!["many madrigals".to_string(), "Tenebrae Responsoria".to_string()]);
+        table.insert("Caravaggio".to_string(), vec!["The Musicians".to_string(), "The Calling of St. Matthew".to_string()]);
+        sort_with_mutable_ref(&mut table);
+        println!("Table {:?} ", table);
+        // assert_eq!(table["Caravaggio"][0], "The Musicians");
+    }
 }
 
 fn show_without_ref(table: Table) {
@@ -293,10 +302,8 @@ fn show_with_ref(table: &Table) {
     }
 }
 
-// fn sort(table: &mut Table) {
-//     println!("Before sorting, table {:?} ", table);
-//     for (_artist, works) in table {
-//         works.sort();
-//     }
-//     println!("After sorting, table {:?} ", table);
-// }
+fn sort_with_mutable_ref(table: &mut Table) {
+    for (_artist, works) in table {
+        works.sort();
+    }
+}
