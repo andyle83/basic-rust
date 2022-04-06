@@ -1,6 +1,9 @@
 use std::str::FromStr;
 use std::env;
 use std::fmt::format;
+use std::collections::HashMap;
+
+type Table = HashMap<String, Vec<String>>;
 
 fn main() {
     let mut numbers = Vec::new();
@@ -249,5 +252,26 @@ fn move_op() {
         let name = composers[0].name.take();
         assert_eq!(name, Some("Anh Le".to_string()));
         assert_eq!(composers[0].name, None);
+    }
+}
+
+#[test]
+fn ref_op() {
+    {
+        let mut table = Table::new();
+        table.insert("Gesualdo".to_string(), vec!["many madrigals".to_string(), "Tenebrae Responsoria".to_string()]);
+        table.insert("Caravaggio".to_string(), vec!["The Musicians".to_string(), "The Calling of St. Matthew".to_string()]);
+        assert_eq!(table["Caravaggio"][0], "The Musicians");
+        show(table);
+        // moved
+        //assert_eq!(table["Caravaggio"][0], "The Musicians");
+    }
+}
+
+fn show(table: Table) {
+    for (artist, works) in table {
+        println!("works by {}:", artist); for work in works {
+            println!("  {}", work);
+        }
     }
 }
