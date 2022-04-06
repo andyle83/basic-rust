@@ -208,6 +208,9 @@ fn ownership_op() {
             v.push(i.to_string());
         }
 
+        // print vector
+        println!("Vector {:?} ", v);
+
         // pull out random elements from the vector
         // move ownership
         //let third = v[2];
@@ -216,5 +219,14 @@ fn ownership_op() {
         assert_eq!(fifth, "105");
         let second = v.swap_remove(1);
         assert_eq!(second, "102");
+
+        println!("Vector {:?} ", v);
+
+        assert_eq!(v, vec!["101", "104", "103"]);
+
+        let third = std::mem::replace(&mut v[2], "substitute".to_string());
+        assert_eq!(third, "103");
+
+        assert_eq!(v, vec!["101", "104", "substitute"];
     }
 }
