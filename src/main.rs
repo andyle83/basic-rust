@@ -323,3 +323,16 @@ fn sort_with_mutable_ref(table: &mut Table) {
         works.sort();
     }
 }
+
+#[test]
+fn ref_compare() {
+    let x = 10;
+    let y = 10;
+
+    assert!(x == y);
+
+    let rx =  &x;
+    let ry = &y;
+
+    assert!(rx == ry);
+}
