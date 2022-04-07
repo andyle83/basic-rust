@@ -335,4 +335,6 @@ fn ref_compare() {
     let ry = &y;
 
     assert!(rx == ry);
+
+    assert!(!std::ptr::eq(rx, ry));
 }
