@@ -143,3 +143,13 @@ fn vector_type_check() {
     assert_eq!(c.len(), 3);
     assert!(!(c.capacity() == 2));
 }
+
+#[test]
+fn slice_type_check() {
+    // slice is another pointer
+    // point to a region of an array or vector
+    // 1. we also have string slice, which is a bit different
+    // 2. this a fat-pointer, including
+    // - point to first element's memory
+    // - number of element in slice
+}
