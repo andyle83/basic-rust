@@ -76,4 +76,7 @@ fn pointer_type_check() {
     // Giving a way to allocate value in head
     let profile = (40, "Tuan Anh");
     let profile_box = Box::new(profile);
+    let (age, name) = *profile_box;
+    assert_eq!(age, 40);
+    assert_eq!(name, "Tuan Anh");
 }
