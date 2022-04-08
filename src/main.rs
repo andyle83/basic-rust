@@ -22,4 +22,6 @@ fn char_type_check() {
     // String - sequence of UTF-8 bytes, not array of character
     assert_eq!('a' as i32, 97);
     assert_eq!('A' as i32, 65);
+    assert_eq!('a' as i32, 0x61);
+    assert_eq!('A' as i32, 0x41);
 }
