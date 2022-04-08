@@ -148,8 +148,29 @@ fn vector_type_check() {
 fn slice_type_check() {
     // slice is another pointer
     // point to a region of an array or vector
-    // 1. we also have string slice, which is a bit different
+    // 1. we also have STRING slice, which is a bit different
     // 2. this a fat-pointer, including
     // - point to first element's memory
     // - number of element in slice
+
+    // vector
+    let v = vec![1, 2, 3];
+    // array
+    let a = [4, 5, 6];
+
+    // slice to vector
+    let sv : &[i32] = &v;
+    let sa : &[i32] = &a;
+
+    // iterate
+    for e in sv {
+        println!("{}", e);
+    }
+
+    for e in sa {
+        println!("{}", e);
+    }
+
+    // get few elements by slice
+    println!("{:?}",&v[0..2]);
 }
