@@ -121,4 +121,24 @@ fn vector_type_check() {
     for val in v.iter() {
         println!("Got {}", val);
     }
+
+    // another way to create vector
+    let mut n: Vec<i32> = (1..3).collect();
+    let f = n.iter().fold(0, | s1, s2 | s1 + s2 );
+    assert_eq!(f, 3);
+
+    // a vector (pointer) container:
+    // 1. pointer to heap memory
+    // 2. capacity
+    // 3. actual contain
+    let mut c = Vec::with_capacity(2);
+    assert_eq!(c.len(), 0);
+    assert_eq!(c.capacity(), 2);
+
+    c.push(1);
+    c.push(2);
+    c.push(3);
+
+    assert_eq!(c.len(), 3);
+    assert!(!(c.capacity() == 2));
 }
