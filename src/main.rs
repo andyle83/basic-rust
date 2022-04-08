@@ -106,3 +106,19 @@ fn array_type_check() {
     assert_eq!(unsorted_numbers[2], 3);
     assert_eq!(unsorted_numbers[3], 4);
 }
+
+#[test]
+fn vector_type_check() {
+    let mut v = vec!['a', 'b', 'c', 'd'];
+    v.push('e');
+    v.push('f');
+
+    assert_eq!(v.pop(), Some('f'));
+    assert_eq!(v.pop(), Some('e'));
+
+    assert_eq!(v.len(), 4);
+
+    for val in v.iter() {
+        println!("Got {}", val);
+    }
+}
