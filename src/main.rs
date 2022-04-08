@@ -92,6 +92,7 @@ fn pointer_type_check() {
 
 #[test]
 fn array_type_check() {
+    // an array living in heap memory
     let array_number = [1, 2, 3, 4, 5, 6];
     let array_string = ["le", "tuan", "anh"];
 
