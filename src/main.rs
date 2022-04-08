@@ -66,17 +66,43 @@ fn pointer_type_check() {
     // NO way to create a NULL reference
     // 1. &x - immutable reference or read only
     // 2. &mut x - mutable reference with write permit
-    let x = 10;
-    let r = &x;
-    let p = &x;
-    assert_eq!(r, p);
-    assert_eq!(*r, 10);
+    {
+        let x = 10;
+        let r = &x;
+        let p = &x;
+        assert_eq!(r, p);
+        assert_eq!(*r, 10);
+    }
 
     // 2. boxes
     // Giving a way to allocate value in head
-    let profile = (40, "Tuan Anh");
-    let profile_box = Box::new(profile);
-    let (age, name) = *profile_box;
-    assert_eq!(age, 40);
-    assert_eq!(name, "Tuan Anh");
+    {
+        let profile = (40, "Tuan Anh");
+        let profile_box = Box::new(profile);
+        let (age, name) = *profile_box;
+        assert_eq!(age, 40);
+        assert_eq!(name, "Tuan Anh");
+    }
+
+    // 3. raw point
+    // no tracking
+    // may be null
+    // may point to free memory
+}
+
+#[test]
+fn array_type_check() {
+    let array_number = [1, 2, 3, 4, 5, 6];
+    let array_string = ["le", "tuan", "anh"];
+
+    assert_eq!(array_number.len(), 6);
+    assert_eq!(array_string.len(), 3);
+    assert_eq!(array_number[0], 1);
+    assert_eq!(array_string[0], "le");
+
+    let mut unsorted_numbers = [1, 3, 2, 5, 4];
+    unsorted_numbers.sort();
+    assert_eq!(unsorted_numbers[1], 2);
+    assert_eq!(unsorted_numbers[2], 3);
+    assert_eq!(unsorted_numbers[3], 4);
 }
