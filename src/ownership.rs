@@ -31,6 +31,9 @@ mod ownership {
             let mut team = Vec::new();
 
             // mover ownership p1 and p2 to team
+            // NOTE:
+            // - Every value has a single owner
+            // - A single value may own many other values.
             team.push(p1);
             team.push(p2);
 
