@@ -201,6 +201,17 @@ mod types {
         let fourth_speed = &[b'G', b'E', b'T'];
         assert_eq!(third_speech, fourth_speed);
 
+        // there are few ways to create string
+        let str1 = "this is the first way".to_string();
+        let str2 = format!("{} {} {} {}", "this", "is", "second", "way");
+        let str3 = vec!["this", "is", "third", "way"].concat();
+        let str4 = vec!["this", "is", "fourth", "way"].join( " ");
+
+        assert_eq!(str1.to_uppercase(), "THIS IS THE FIRST WAY");
+        assert!(str2.contains("this"));
+        assert!(str3.starts_with("this"));
+        assert!(str4.ends_with("way"));
+
         // 2. string slice
         // Reference (borrow reference) to UTF-8 owned by something else
         // Fat pointer, contain:
