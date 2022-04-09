@@ -37,6 +37,9 @@ mod ownership {
             team.push(p1);
             team.push(p2);
 
+            let name = std::mem::replace(&mut team[1].name, "Duc Minh".to_string());
+            assert_eq!(name, "Ngoc Minh".to_string());
+
             // team has been move into this
             for member in &team {
                 println!("{} with age {}", member.name, member.age);
