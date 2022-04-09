@@ -73,4 +73,26 @@ mod ownership {
             assert_eq!(u.pop().unwrap(), "anh".to_string());
         }
     }
+
+    #[derive(Copy, Clone)]
+    struct Point {
+        x: u32,
+        y: u32
+    }
+
+    fn print_point(p: Point) {
+        println!("Point info: {} {}", p.x, p.y);
+    }
+
+    #[test]
+    fn copy() {
+        let p = Point {
+            x: 100,
+            y: 200
+        };
+
+        print_point(p);
+
+        println!("Point format: ({},{})", p.x, p.y);
+    }
 }
