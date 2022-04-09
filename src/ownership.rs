@@ -34,6 +34,12 @@ mod ownership {
             team.push(p1);
             team.push(p2);
 
+            // team has been move into this
+            for member in team {
+                println!("{} with age {}", member.name, member.age);
+            }
+
+            // so now we can NOT borrow
             assert_eq!(team.len(), 2);
         }
 
