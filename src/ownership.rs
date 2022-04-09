@@ -35,7 +35,7 @@ mod ownership {
             team.push(p2);
 
             // team has been move into this
-            for member in team {
+            for member in &team {
                 println!("{} with age {}", member.name, member.age);
             }
 
