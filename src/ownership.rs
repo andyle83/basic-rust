@@ -67,7 +67,7 @@ mod ownership {
             let mut t = v.clone();
             let mut u = t.clone();
             assert_eq!(t.len(), 3);
-            assert_eq!(u.pop(), Some("anh".to_string()));
+            assert_eq!(u.pop().unwrap(), "anh".to_string());
         }
     }
 }
