@@ -46,6 +46,18 @@ mod ownership {
             assert_eq!(team.len(), 2);
         }
 
-        // tuple, array, vector own contained element
+        {
+            // tuple, array, vector own contained element}
+            let v = vec!["le".to_string(), "tuan".to_string(), "anh".to_string()];
+
+            // move ownership of vector to t, v is uninitialized
+            let t = v;
+
+            // this is not working because v is uninitialized
+            // let u = v;
+
+            // and now t and v are uninitialized
+            let u = t;
+        }
     }
 }
