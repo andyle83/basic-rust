@@ -58,6 +58,16 @@ mod ownership {
 
             // and now t and v are uninitialized
             let u = t;
+            assert_eq!(u.len(), 3);
+        }
+
+        {
+            // perform clone to make deep copy, and therefore avoid moving ownership
+            let v = vec!["le".to_string(), "tuan".to_string(), "anh".to_string()];
+            let mut t = v.clone();
+            let mut u = t.clone();
+            assert_eq!(t.len(), 3);
+            assert_eq!(u.pop(), Some("anh".to_string()));
         }
     }
 }
