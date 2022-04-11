@@ -71,4 +71,22 @@ mod reference {
         assert_eq!(table["Ngoc Minh"][0], "cleaning".to_string());
     }
 
+    #[test]
+    fn test_dereference() {
+        struct Profile {
+            name: String,
+            age: u8
+        }
+
+        let my_profile = Profile {
+            name: "Tuan Anh Le".to_string(),
+            age: 40
+        };
+
+        let borrowed_profile = &my_profile;
+
+        assert_eq!((*borrowed_profile).name, "Tuan Anh Le".to_string());
+        assert_ne!((*borrowed_profile).age, 50);
+    }
+
 }
