@@ -78,6 +78,11 @@ mod reference {
             age: u8
         }
 
+        struct Point {
+            x: i32,
+            y: i32
+        }
+
         let my_profile = Profile {
             name: "Tuan Anh Le".to_string(),
             age: 40
@@ -87,6 +92,15 @@ mod reference {
 
         assert_eq!((*borrowed_profile).name, "Tuan Anh Le".to_string());
         assert_ne!((*borrowed_profile).age, 50);
+
+        // reference to reference
+        let point = Point { x: 10, y: 10 };
+        let r: &Point = &point;
+        let rr = &r;
+        let rrr = &rr;
+
+        assert_eq!(rrr.x, 10);
+        assert_eq!(rrr.y, 10);
     }
 
 }
