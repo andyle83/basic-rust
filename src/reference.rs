@@ -205,7 +205,10 @@ mod reference {
             let p = [1, 3, 4, 5];
             let k = smallest_in_vector(&p);
             assert_eq!(*k, 1);
+            s = smallest_in_vector(&p);
         }
+        // Error: different lifetime
+        assert_eq!(*s, 1);
     }
 
 }
