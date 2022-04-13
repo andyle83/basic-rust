@@ -142,10 +142,19 @@ mod reference {
             {
                 let x = 1;
                 r = &x;
+                assert_eq!(&x, &1);
             }
+
+            // two rules
+            // 1. variable lifetime must contain reference borrow from it
+            // NOT WORKING
+            // assert_eq!(&x, &1);
+
+            // 2. reference lifetime must contain or enclose variable
+            // NOT WORKING
+            // assert_eq!(*r, 1);
             // error of borrowed value does not live long enough
             // (3) is not longer as (1)
-            assert_eq!(*r, 1);
         }
     }
 
