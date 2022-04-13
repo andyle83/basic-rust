@@ -156,6 +156,19 @@ mod reference {
             // error of borrowed value does not live long enough
             // (3) is not longer as (1)
         }
+
+        {
+            // variable lifetime contain reference borrow from it
+            let x = 1;
+            {
+                // reference lifetime contain / enclose variable (y, or z)
+                let y = &x;
+                {
+                    let z = &x;
+                    assert_eq!(*z, 1);
+                }
+            }
+        }
     }
 
 }
