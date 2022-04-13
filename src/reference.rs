@@ -26,9 +26,13 @@ fn sort_table(table: &mut Table) {
     }
 }
 
+fn factorial(n: usize) -> usize {
+    (1..n+1).fold(1, |a , b | a * b)
+}
+
 #[cfg(test)]
 mod reference {
-    use crate::reference::{show_table, show_table_by_reference, sort_table, Table};
+    use crate::reference::{factorial, show_table, show_table_by_reference, sort_table, Table};
 
     # [test]
     fn problem_with_move_ownership() {
@@ -117,7 +121,14 @@ mod reference {
         assert_eq!(rx, ry);
         assert_eq!(rrx, rry);
 
+        // checking reference compare by address of memory
+        assert!(!std::ptr::eq(rx, ry));
+        assert!(!std::ptr::eq(rrx, rry));
 
+        // reference to expression
+        let f = &factorial(6);
+        assert_eq!(*f, 720);
+        assert_eq!(f + &30, 750);
     }
 
 }
