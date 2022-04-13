@@ -2,6 +2,8 @@ use std::collections::HashMap;
 
 type Table = HashMap<String, Vec<String>>;
 
+static mut STASH: &i32 = &128;
+
 fn show_table(table: Table) {
     for(kid, works) in table {
         println!("Work by {} :", kid);
@@ -32,7 +34,7 @@ fn factorial(n: usize) -> usize {
 
 #[cfg(test)]
 mod reference {
-    use crate::reference::{factorial, show_table, show_table_by_reference, sort_table, Table};
+    use crate::reference::{factorial, show_table, show_table_by_reference, sort_table, STASH, Table};
 
     # [test]
     fn problem_with_move_ownership() {
@@ -168,6 +170,14 @@ mod reference {
                     assert_eq!(*z, 1);
                 }
             }
+        }
+    }
+
+    // lifetime of function `f` is just in its enclose
+    fn f(p: &i32) {
+        unsafe {
+            // ERROR: lifetime of reference - STASH outlive the borrowed content p
+            STASH = p;
         }
     }
 
