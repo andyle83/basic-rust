@@ -201,11 +201,12 @@ mod reference {
     #[test]
     fn test_return_reference() {
         let s: &i32;
+        let q = [1, 3, 4, 5];
         {
             let p = [1, 3, 4, 5];
             let k = smallest_in_vector(&p);
             assert_eq!(*k, 1);
-            s = smallest_in_vector(&p);
+            s = smallest_in_vector(&q);
         }
         // Error: different lifetime
         assert_eq!(*s, 1);
