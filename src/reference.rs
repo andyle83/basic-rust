@@ -131,4 +131,22 @@ mod reference {
         assert_eq!(f + &30, 750);
     }
 
+    #[test]
+    fn check_lifetime() {
+        {
+            // there are three life time
+            // 1. r
+            // 2. x
+            // 3. &x - reference borrow of x
+            let r;
+            {
+                let x = 1;
+                r = &x;
+            }
+            // error of borrowed value does not live long enough
+            // (3) is not longer as (1)
+            assert_eq!(*r, 1);
+        }
+    }
+
 }
