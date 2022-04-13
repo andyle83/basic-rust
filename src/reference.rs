@@ -174,7 +174,7 @@ mod reference {
     }
 
     // lifetime of function `f` is just in its enclose
-    fn f(p: &i32) {
+    fn f(p: &'static i32) {
         unsafe {
             // ERROR: lifetime of reference - STASH outlive the borrowed content p
             STASH = p;
