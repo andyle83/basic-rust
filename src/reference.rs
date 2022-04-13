@@ -181,4 +181,13 @@ mod reference {
         }
     }
 
+    #[test]
+    fn test_reference_in_parameters() {
+        static p: i32 = 100;
+        f(&p);
+        unsafe {
+            assert_eq!(STASH, &100);
+        }
+    }
+
 }
