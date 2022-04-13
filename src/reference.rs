@@ -101,6 +101,23 @@ mod reference {
 
         assert_eq!(rrr.x, 10);
         assert_eq!(rrr.y, 10);
+
+        // compare reference
+        // dereference when compare
+        let x = 10;
+        let y = 10;
+
+        let rx = &x;
+        let ry = &y;
+
+        let rrx = &rx;
+        let rry = &ry;
+
+        assert_eq!(x, y);
+        assert_eq!(rx, ry);
+        assert_eq!(rrx, rry);
+
+
     }
 
 }
