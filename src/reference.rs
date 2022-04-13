@@ -32,9 +32,17 @@ fn factorial(n: usize) -> usize {
     (1..n+1).fold(1, |a , b | a * b)
 }
 
+fn smallest_in_vector(v: &[i32]) -> &i32 {
+    let mut s = &v[0];
+    for r in &v[1..] {
+        if *r < *s { s = r; }
+    }
+    s
+}
+
 #[cfg(test)]
 mod reference {
-    use crate::reference::{factorial, show_table, show_table_by_reference, sort_table, STASH, Table};
+    use crate::reference::{factorial, show_table, show_table_by_reference, smallest_in_vector, sort_table, STASH, Table};
 
     # [test]
     fn problem_with_move_ownership() {
@@ -187,6 +195,16 @@ mod reference {
         f(&p);
         unsafe {
             assert_eq!(STASH, &100);
+        }
+    }
+
+    #[test]
+    fn test_return_reference() {
+        let s: &i32;
+        {
+            let p = [1, 3, 4, 5];
+            let k = smallest_in_vector(&p);
+            assert_eq!(*k, 1);
         }
     }
 
