@@ -135,9 +135,9 @@ mod reference {
     fn check_lifetime() {
         {
             // there are three life time
-            // 1. r
-            // 2. x
-            // 3. &x - reference borrow of x
+            // 1. r -> reference
+            // 2. x -> variable
+            // 3. &x -> reference borrow from x (variable)
             let r;
             {
                 let x = 1;
