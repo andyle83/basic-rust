@@ -12,6 +12,12 @@ mod expression {
         };
 
         assert_eq!(m, 1);
+
+        if let Some(a) = Some(10) {
+            assert_eq!(a, 10);
+        } else {
+            println!("Error");
+        }
     }
 
     #[test]
