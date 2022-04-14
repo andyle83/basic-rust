@@ -183,12 +183,13 @@ mod reference {
         {
             // the rules are also applied for struct contain reference
             struct S {
-                r: &i32
+                r: &'static i32
             }
 
             let s;
             {
-                let x = 10;
+                // because lifetime of r is static, so it can only refer to variable who has static lifetime as well.
+                static x: i32 = 10;
                 s = S { r: &x };
                 assert_eq!(*s.r, 10);
             }
