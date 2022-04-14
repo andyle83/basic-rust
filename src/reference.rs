@@ -196,6 +196,23 @@ mod reference {
             // Error since borrow outlive variable
             // assert_eq!(*s.r, 10);
         }
+
+        {
+            // distinct lifetime in a structure
+            // No error, not like book explained !!!
+            struct S<'a> {
+                x: &'a i32,
+                y: &'a i32
+            }
+
+            let a = 10;
+            let r;
+            {
+                let b = 20;
+                let s = S { x: &a, y: &b };
+                r = s.x;
+            }
+        }
     }
 
     // lifetime of function `f` is just in its enclose
