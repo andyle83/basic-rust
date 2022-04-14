@@ -26,6 +26,13 @@ mod expression {
             _ => println!("Neither 0 or 1")
         };
 
+        let result = Some(100);
+
+        match result {
+            Some(a) => println!("{}", a),
+            _ => println!("Nothing")
+        };
+
         assert_eq!(_result, ());
     }
 }
