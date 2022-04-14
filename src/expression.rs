@@ -1,5 +1,24 @@
 #[cfg(test)]
 mod expression {
+
+    // Diverging function
+    fn foo() -> ! {
+        panic!("This call never return");
+    }
+
+    fn bar() {
+        ()
+    }
+
+    #[test]
+    fn test_divergent() {
+        let a = bar();
+        assert_eq!(a, ());
+        foo();
+        // Never call here
+        assert_eq!(1, 0);
+    }
+
     #[test]
     fn check_if_else() {
         let b = true;
