@@ -179,6 +179,22 @@ mod reference {
                 }
             }
         }
+
+        {
+            // the rules are also applied for struct contain reference
+            struct S {
+                r: &i32
+            }
+
+            let s;
+            {
+                let x = 10;
+                s = S { r: &x };
+                assert_eq!(*s.r, 10);
+            }
+            // Error since borrow outlive variable
+            // assert_eq!(*s.r, 10);
+        }
     }
 
     // lifetime of function `f` is just in its enclose
