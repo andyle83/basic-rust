@@ -41,4 +41,15 @@ mod expression {
 
         assert_eq!(_result, ());
     }
+
+    #[test]
+    fn check_loop() {
+        let results = vec!["hello", "goodbye"];
+
+        for result in &results {
+            println!("{}", result);
+        }
+
+        assert_eq!(results.len(), 2);
+    }
 }
