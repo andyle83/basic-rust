@@ -17,19 +17,25 @@ mod errorhandler {
 
     #[test]
     fn test_parse() {
-        let a = "10".to_string();
-        assert_eq!(parseInt(a).unwrap(), 10);
+        let n1 = "10".to_string();
+        assert_eq!(parseInt(n1).unwrap(), 10);
 
-        let b = "not_a_nunber".to_string();
-        let result = match parseInt(b) {
+        let n2 = "20".to_string();
+        assert_eq!(parseInt(n2).is_ok(), true);
+
+        let b1 = "not_a_number".to_string();
+        let b2 = b1.clone();
+
+        let result = match parseInt(b1) {
             Ok(a) => a + 10,
             Err(e) => {
                 println!("Issue happen");
                 0
             }
         };
-
         assert_eq!(result, 0);
+
+        assert_eq!(parseInt(b2).is_err(), true);
 
     }
 }
