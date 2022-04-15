@@ -20,6 +20,15 @@ mod expression {
     }
 
     #[test]
+    fn test_closure() {
+        let c = |a| a * 2;
+        assert_eq!(c(1), 2);
+
+        let add = |a, b| a + b;
+        assert_eq!(add(2,4), 6)
+    }
+
+    #[test]
     fn check_if_else() {
         let b = true;
         let m = if b {
