@@ -19,5 +19,8 @@
      - Byte string ~ slice of byte array
      - String memory (make difference between string - ownership / and string slide - borrow)
    
- 2. Ownership Rule
- 3. Reference
+2. Ownership Rule
+3. Reference
+4. Expression
+5. Error Handling
+6. Crates & Module
