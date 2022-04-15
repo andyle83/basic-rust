@@ -10,6 +10,7 @@ mod errorhandler {
             },
             Err(e) => {
                 println!("parse error");
+                println!("Error in debug view {:?}", e);
                 Err("Error".to_string())
             }
         }
