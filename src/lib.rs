@@ -26,12 +26,12 @@ pub fn run_simulation(fern: &mut Fern, days: usize) {
     }
 }
 
-fn main() {
-    let mut fern = Fern {
-        size: 1.0,
-        growth_rate: 0.001
-    };
-
-    run_simulation(&mut fern, 1000);
-    println!("final fern size: {}", fern.size);
-}
+// fn main() {
+//     let mut fern = Fern {
+//         size: 1.0,
+//         growth_rate: 0.001
+//     };
+//
+//     run_simulation(&mut fern, 1000);
+//     println!("final fern size: {}", fern.size);
+// }
