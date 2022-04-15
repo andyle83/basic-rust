@@ -11,6 +11,7 @@ mod expression {
     }
 
     #[test]
+    #[should_panic(expected="This call never return")]
     fn test_divergent() {
         let a = bar();
         assert_eq!(a, ());
