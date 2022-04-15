@@ -1,5 +1,4 @@
-use crate::plant_structures::branch;
-use crate::plant_structures::branch::Branch;
+use crate::plant_structures::branch::{Branch, add_leaves};
 use crate::plant_structures::leave::Leave;
 
 pub struct Root {
@@ -21,8 +20,8 @@ pub fn init_root() {
     };
 
     // invoke fn from branch module to add leaves l1 and l2
-    branch::add_leaves(b, l1);
-    branch::add_leaves(b, l2);
+    add_leaves(b, l1);
+    add_leaves(b, l2);
 
     assert_eq!(b.leaves.len(), 2);
 }
