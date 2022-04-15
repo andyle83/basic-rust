@@ -1,5 +1,5 @@
-use crate::plant_structures::branch::{Branch, add_leaves};
-use crate::plant_structures::leave::Leave;
+use super::branch::{Branch, add_leaves};
+use super::leave::Leave;
 
 pub struct Root {
     pub node: Branch

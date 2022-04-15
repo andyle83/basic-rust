@@ -1,4 +1,4 @@
-use crate::plant_structures::leave::Leave;
+use super::leave::Leave;
 
 pub struct Branch {
     pub leaves: Vec<Leave>
