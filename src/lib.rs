@@ -8,9 +8,9 @@ mod errorhandler;
 
 pub mod plant_structures;
 
-struct Fern {
-    size: f64,
-    growth_rate: f64
+pub struct Fern {
+    pub size: f64,
+    pub growth_rate: f64
 }
 
 impl Fern {
@@ -20,7 +20,7 @@ impl Fern {
     }
 }
 
-fn run_simulation(fern: &mut Fern, days: usize) {
+pub fn run_simulation(fern: &mut Fern, days: usize) {
     for _ in 0..days {
         fern.grow();
     }
