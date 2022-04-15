@@ -25,6 +25,7 @@ mod errorhandler {
 
         let b1 = "not_a_number".to_string();
         let b2 = b1.clone();
+        let b3 = b2.clone();
 
         let result = match parseInt(b1) {
             Ok(a) => a + 10,
@@ -36,6 +37,8 @@ mod errorhandler {
         assert_eq!(result, 0);
 
         assert_eq!(parseInt(b2).is_err(), true);
+
+        assert_eq!(parseInt(b3).unwrap_or(0), 0);
 
     }
 }
