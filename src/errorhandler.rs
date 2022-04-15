@@ -22,7 +22,7 @@ mod errorhandler {
         assert_eq!(parseInt(n1).unwrap(), 10);
 
         let n2 = "20".to_string();
-        assert_eq!(parseInt(n2).is_ok(), true);
+        assert!(parseInt(n2).is_ok());
 
         let b1 = "not_a_number".to_string();
         let b2 = b1.clone();
@@ -37,7 +37,7 @@ mod errorhandler {
         };
         assert_eq!(result, 0);
 
-        assert_eq!(parseInt(b2).is_err(), true);
+        assert!(parseInt(b2).is_err());
 
         assert_eq!(parseInt(b3).unwrap_or(0), 0);
 
