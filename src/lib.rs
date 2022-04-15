@@ -1,3 +1,6 @@
+//! Simulate the growth of ferns, from the level of
+//! individual cells on up
+
 extern crate core;
 
 mod r#type;
@@ -8,6 +11,7 @@ mod errorhandler;
 
 pub mod plant_structures;
 
+/// Fern structure
 pub struct Fern {
     pub size: f64,
     pub growth_rate: f64
@@ -20,6 +24,7 @@ impl Fern {
     }
 }
 
+/// Running Fern simulation in number of days
 pub fn run_simulation(fern: &mut Fern, days: usize) {
     for _ in 0..days {
         fern.grow();
