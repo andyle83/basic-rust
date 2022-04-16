@@ -3,11 +3,12 @@
 
 extern crate core;
 
-mod r#type;
+mod types;
 mod ownership;
 mod reference;
 mod expression;
 mod errorhandler;
+mod structure;
 
 pub mod plant_structures;
 
