@@ -7,6 +7,15 @@ mod structure {
     }
 
     impl GrayscaleMap {
+        // static method, for example a constructor
+        pub fn new(width: usize, height: usize, value: u8) -> GrayscaleMap {
+            let pixels = vec![value; width * height];
+            GrayscaleMap {
+                pixels,
+                size: (width, height)
+            }
+        }
+
         pub fn friendly_print(&self, label: &str) {
             println!("*** image {:} ***", label);
             println!("pixels size {}", self.pixels.len());
@@ -37,6 +46,11 @@ mod structure {
         // calling struct method
         image1.friendly_print("image1");
         image2.friendly_print("image2");
+
+        // create new image using constructor `new`
+        let image3 = GrayscaleMap::new(10, 20, 100);
+        image3.friendly_print("image3");
+        assert_eq!(image3.pixels.len(), 200);
     }
 
 }
