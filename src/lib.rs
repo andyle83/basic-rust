@@ -9,6 +9,7 @@ mod reference;
 mod expression;
 mod errorhandler;
 mod structure;
+mod enums;
 
 pub mod plant_structures;
 
