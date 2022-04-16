@@ -19,6 +19,7 @@ pub struct Fern {
 
 impl Fern {
     // function for Fern structure
+
     fn grow(&mut self) {
         self.size *= 1.0 + self.growth_rate
     }
