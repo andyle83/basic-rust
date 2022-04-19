@@ -172,16 +172,16 @@ mod enums {
         };
 
         match account {
-            Account {name, language, id, status, address} => {
-                greeting(name, language, address);
+            Account {name, language,.. } => {
+                greeting(name, language);
                 show_settings(&account)
             },
             _ => println!("Not found any account")
         }
     }
 
-    fn greeting(name: &str, language: &str, address: String) {
-        println!("Hello {} who can speak language {} and live in {}", name, language, address);
+    fn greeting(name: &str, language: &str) {
+        println!("Hello {} who can speak language {}", name, language);
     }
 
     fn show_settings(account: &Account) {
