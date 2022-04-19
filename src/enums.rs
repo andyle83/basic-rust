@@ -146,4 +146,34 @@ mod enums {
         match_slice_data(&single);
         match_slice_data(&plural);
     }
+
+    // Using a complicate data struct
+    enum Status {
+        Single,
+        Married
+    }
+
+    struct  Account<'a> {
+        name: &'a str,
+        language: &'a str,
+        id: u32,
+        status: Status,
+        address: String
+    }
+
+    #[test]
+    fn test_match_complicated_structure() {
+        let account =  Account {
+            name: "Tuan Anh Le",
+            language: "Viet Nam",
+            id: 100,
+            status: Status::Single,
+            address: "4/12 Mincha Street".to_string()
+        };
+
+        match account {
+            Account {name, language, ..} => println!("{} speaks {}", name, language),
+            _ => println!("Not found any account")
+        }
+    }
 }
