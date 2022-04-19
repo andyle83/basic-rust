@@ -129,4 +129,21 @@ mod enums {
 
         assert_eq!(radius, 100);
     }
+
+    fn match_slice_data(names: &[&str]) {
+        match names {
+            [] => println!("Hello, Mr. Nobody"),
+            [a] => println!("Hello, Mr (Mrs) {}", a),
+            [a, b] => println!("Hello, {} and {}", a, b),
+            [a, .., b] => println!("Hello, {}....{}", a, b)
+        }
+    }
+
+    #[test]
+    fn test_match_slice_data() {
+        let single = ["Anh Le"];
+        let plural = ["Duc Minh", "Ngoc Minh", "Mai Huong"];
+        match_slice_data(&single);
+        match_slice_data(&plural);
+    }
 }
