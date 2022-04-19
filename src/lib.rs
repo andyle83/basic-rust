@@ -10,6 +10,7 @@ mod expression;
 mod errorhandler;
 mod structure;
 mod enums;
+mod traits;
 
 pub mod plant_structures;
 
