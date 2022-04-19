@@ -30,4 +30,34 @@ mod enums {
         assert_eq!(http_status_from_u32(200).unwrap(), StatusCode::OK);
         assert_eq!(http_status_from_u32(100), None);
     }
+
+    #[derive(Copy, Clone, Debug, PartialEq, Eq)]
+    enum TimeUnit {
+        Seconds, Minutes, Hours, Days, Months, Years
+    }
+
+    impl TimeUnit {
+        fn plural(self) -> &'static str {
+            match self {
+                TimeUnit::Seconds => "seconds",
+                TimeUnit::Minutes => "minutes",
+                TimeUnit::Hours => "hours",
+                TimeUnit::Days => "days",
+                TimeUnit::Months => "months",
+                TimeUnit::Years => "years"
+            }
+        }
+
+        fn singular(self) -> &'static str {
+            self.plural().trim_matches('s')
+        }
+    }
+
+    #[test]
+    fn test_time_unit() {
+        let hours = TimeUnit::Hours;
+
+        assert_eq!(hours.plural(), "hours");
+        assert_eq!(hours.singular(), "hour");
+    }
 }
