@@ -4,18 +4,21 @@ mod traits {
     use std::io::Write;
     use std::io::Result;
 
+    // Using generic function with trait
     fn say_hello<W: Write>(out: &mut W) -> Result<()> {
-        out.write(b"Aa");
+        out.write_all(b"Aa");
         out.flush()
     }
 
     #[test]
     fn test_say_hello() {
-        // let mut local_file = File::create("hello.txt");
-        let mut buf: Vec<u8> = vec![];
-        say_hello(&mut buf);
+        let mut local_file = File::create("hello.txt");
+        let mut bytes: Vec<u8> = vec![];
 
-        println!("Value in buf {:?}", buf);
+        say_hello(&mut bytes);
+        // say_hello(&mut local_file);
+
+        println!("Value in buf {:?}", bytes);
     }
 
 }
