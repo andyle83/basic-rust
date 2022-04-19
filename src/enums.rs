@@ -104,6 +104,15 @@ mod enums {
         }
     }
 
+    impl Shape {
+        fn get_radius(self) -> Option<u32> {
+            match self {
+                Shape::Sphere { center, radius} => Some(radius),
+                _ => None,
+            }
+        }
+    }
+
     #[test]
     fn enum_contain_struct_variant() {
         let shape = Shape::Sphere {
@@ -116,5 +125,8 @@ mod enums {
         };
 
         // How to unpack Shape to get radius value
+        let radius = shape.get_radius().unwrap_or(0);
+
+        assert_eq!(radius, 100);
     }
 }
