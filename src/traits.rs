@@ -2,8 +2,9 @@
 mod traits {
     use std::fs::File;
     use std::io::Write;
+    use std::cmp::Ord;
 
-    // Using generic function with trait
+    // Trait example
     fn say_hello(out: &mut dyn Write) -> std::io::Result<()> {
         out.write_all(b"Aa");
         out.flush()
@@ -17,7 +18,32 @@ mod traits {
         say_hello(&mut bytes);
         say_hello(&mut local_file);
 
-        // println!("Value in buf {:?}", bytes);
+        println!("Value in buf {:?}", bytes);
+    }
+
+
+    // Generic
+    fn get_min<T: Ord>(value1: T, value2: T) -> T {
+        if value1 < value2 {
+            value1
+        } else {
+            value2
+        }
+    }
+
+    #[test]
+    fn test_get_min() {
+        let value1 = 100;
+        let value2 = 200;
+
+        assert_eq!(get_min(value1, value2), value1);
+        assert_eq!(get_min(value2, value1), value1);
+
+        let str1 = String::from("hello1");
+        let str2 = String::from("hello2");
+
+        assert_eq!(get_min(&str1, &str2), &str1);
+        assert_eq!(get_min(&str2, &str1), &str1);
     }
 
     trait TaskHandling {
