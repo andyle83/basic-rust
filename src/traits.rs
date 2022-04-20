@@ -21,4 +21,50 @@ mod traits {
         println!("Value in buf {:?}", bytes);
     }
 
+    trait TaskHandling {
+        fn get_requirement(&self);
+        fn analyze_requirement(&self);
+        fn implement_requirement(&self);
+        fn review(&self);
+        fn test(&self);
+        fn release(&self);
+    }
+    
+    struct Task {
+        id: u32,
+        title: String,
+        description: String,
+        report_to: String,
+        assign_to: String,
+        status: String
+    }
+
+    impl TaskHandling for Task {
+        fn get_requirement(&self) {
+            println!("Get Requirement {}", self.id);
+        }
+
+        fn analyze_requirement(&self) {
+            println!("Analyze Requirement");
+            println!("Title {}", self.title);
+            println!("Description {}", self.description);
+        }
+
+        fn implement_requirement(&self) {
+            println!("Implement Requirement");
+        }
+
+        fn review(&self) {
+            println!("Review");
+        }
+
+        fn test(&self) {
+            println!("Test");
+        }
+
+        fn release(&self) {
+            println!("Release");
+        }
+    }
+
 }
