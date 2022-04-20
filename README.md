@@ -1,5 +1,13 @@
 ### Learning basics in Rust language
 
+This Repo includes some dummy code that I tried to practice during reading the Book `Programming Rust 2nd`
+It helps me to have a better memo by 
+- Trying some syntax
+- Trying to solve some problem with Rust
+- Participate on some blockchain project that use Rust
+
+Reading content (updating...)
+
 1. System type
    - Numbers (Int, Float, Double, Byte)
    - Characters
@@ -24,3 +32,6 @@
 4. Expression
 5. Error Handling
 6. Crates & Module
+7. Structs
+8. Enums & Pattern
+9. Traits & Generic
