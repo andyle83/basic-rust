@@ -5,6 +5,7 @@ mod traits {
     use std::cmp::Ord;
 
     // Trait example
+    // &mut dyn Write is a type object
     fn say_hello(out: &mut dyn Write) -> std::io::Result<()> {
         out.write_all(b"Aa");
         out.flush()
@@ -15,6 +16,7 @@ mod traits {
         let mut local_file = File::create("hello.txt").expect("Unable to create file");
         let mut bytes: Vec<u8> = vec![];
 
+        // convert reference to trait object
         say_hello(&mut bytes);
         say_hello(&mut local_file);
 
@@ -44,6 +46,26 @@ mod traits {
 
         assert_eq!(get_min(&str1, &str2), &str1);
         assert_eq!(get_min(&str2, &str1), &str1);
+    }
+
+    // trait object
+    #[test]
+    fn test_trait_object() {
+        use std::io::Write;
+        // reference to a trait type
+        let mut buf: Vec<u8> = vec![];
+
+        // writer is a trait object - Or it is a reference to a trait type
+        let writer: &mut dyn Write = &mut buf;
+
+        // writer is a fat pointer, that point to
+        // - value
+        // - table represent value type (its trait)
+        (*writer).write_all(b"This is a message");
+        (*writer).flush();
+
+        println!("Data in buf: {:?}", buf);
+        assert_eq!(buf, b"This is a message");
     }
 
     trait TaskHandling {
