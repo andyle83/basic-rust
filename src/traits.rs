@@ -5,7 +5,9 @@ mod traits {
     use std::cmp::Ord;
 
     // Trait example
-    // &mut dyn Write is a type object
+    // &mut dyn Write is a trait object
+    // fn say_hello(out: &mut dyn Write) -> std::io::Result<()> {
+    // T: Write is call type parameter
     fn say_hello<T: Write>(out: &mut T) -> std::io::Result<()> {
         out.write_all(b"Aa");
         out.flush()
