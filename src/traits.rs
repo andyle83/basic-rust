@@ -6,7 +6,7 @@ mod traits {
 
     // Trait example
     // &mut dyn Write is a type object
-    fn say_hello(out: &mut dyn Write) -> std::io::Result<()> {
+    fn say_hello<T: Write>(out: &mut T) -> std::io::Result<()> {
         out.write_all(b"Aa");
         out.flush()
     }
