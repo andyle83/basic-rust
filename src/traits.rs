@@ -27,7 +27,9 @@ mod traits {
         fn implement_requirement(&self);
         fn review(&self);
         fn test(&self);
-        fn release(&self);
+        fn release(&self) {
+            println!("This is a default implement");
+        }
     }
     
     struct Task {
@@ -62,9 +64,9 @@ mod traits {
             println!("Test");
         }
 
-        fn release(&self) {
-            println!("Release");
-        }
+        // fn release(&self) {
+        //     println!("Release");
+        // }
     }
 
 }
